@@ -12,7 +12,7 @@ Route::get('/', function () {
     return 'RADI';
 });
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+ // Route::get('/', [HomeController::class, 'index'])->name('home');
 // Svi frizeri
 Route::get('/frizeri', [FrizerController::class, 'index'])->name('frizeri.index');
 
