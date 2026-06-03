@@ -8,11 +8,9 @@ use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\MessageController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return 'RADI';
-});
 
- // Route::get('/', [HomeController::class, 'index'])->name('home');
+
+ Route::get('/', [HomeController::class, 'index'])->name('home');
 // Svi frizeri
 Route::get('/frizeri', [FrizerController::class, 'index'])->name('frizeri.index');
 
