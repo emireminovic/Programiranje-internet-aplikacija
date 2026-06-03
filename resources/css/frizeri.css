@@ -1,0 +1,260 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+    color: #1f2937;
+}
+
+.container {
+    width: 92%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* HEADER / NAV */
+.site-header {
+    background: #111827;
+    color: white;
+    padding: 18px 0;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+.btn-nav {
+    background: #2563eb;
+    padding: 8px 14px;
+    border-radius: 8px;
+}
+
+.logout-form {
+    display: inline;
+}
+
+.logout-form button {
+    background: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+/* PAGE */
+.page-content {
+    padding: 30px 0 50px 0;
+}
+
+.page-title-wrap {
+    margin-bottom: 20px;
+}
+
+.page-title-wrap h1 {
+    margin: 0;
+    font-size: 34px;
+    color: #111827;
+}
+
+/* SEARCH */
+.search-filter-box {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 35px;
+    background: white;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+.search-input {
+    flex: 1;
+    min-width: 280px;
+    padding: 16px 18px;
+    font-size: 18px;
+    border: 1px solid #d1d5db;
+    border-radius: 12px;
+}
+
+.rating-select {
+    min-width: 180px;
+    padding: 16px 14px;
+    font-size: 16px;
+    border: 1px solid #d1d5db;
+    border-radius: 12px;
+    background: white;
+}
+
+.search-btn {
+    padding: 16px 22px;
+    border: none;
+    border-radius: 12px;
+    background: #2563eb;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* CARDS */
+.frizer-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+}
+
+.frizer-card {
+    background: white;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease;
+}
+
+.frizer-card:hover {
+    transform: translateY(-4px);
+}
+
+.frizer-image-wrap {
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+    background: #e5e7eb;
+}
+
+.frizer-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.frizer-card-body {
+    padding: 18px;
+}
+
+.frizer-card-body h2 {
+    margin: 0 0 12px 0;
+    font-size: 22px;
+}
+
+.frizer-card-body p {
+    margin: 8px 0;
+    color: #374151;
+}
+
+.rating {
+    color: #111827;
+}
+
+.details-btn {
+    display: inline-block;
+    margin-top: 14px;
+    text-decoration: none;
+    background: #111827;
+    color: white;
+    padding: 10px 16px;
+    border-radius: 10px;
+}
+
+.no-results {
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+/* FOOTER */
+.site-footer {
+    background: #111827;
+    color: white;
+    text-align: center;
+    padding: 25px 0;
+    margin-top: 30px;
+}
+
+.site-footer p {
+    margin: 0;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1200px) {
+    .frizer-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .frizer-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 700px) {
+    .nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .page-title-wrap h1 {
+        font-size: 28px;
+    }
+
+    .search-input,
+    .rating-select,
+    .search-btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .frizer-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 26px;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+}
+
+.logo img {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+}
