@@ -55,7 +55,7 @@ class RegisteredUserController extends Controller
     event(new Registered($user));
     if ($user->role === 'korisnik') {
     Auth::login($user);
-    return redirect(route('dashboard', absolute: false));
+    return redirect()->route('moj.profil');
 }
 
 return redirect()->route('login')->with('status', 'Zahtev poslat, čeka odobrenje admina.');
