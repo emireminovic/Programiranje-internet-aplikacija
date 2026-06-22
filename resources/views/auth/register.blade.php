@@ -115,7 +115,7 @@
         <div class="auth-card">
             <h1>Registracija</h1>
 
-            <form method="POST" action="{{ route('register') }}">
+            <form method="POST" action="{{ route('register') }}" id="registerForm">
                 @csrf
 
                 <div class="auth-group">
@@ -214,6 +214,49 @@
             <p>BookCut &copy; 2026 - Sistem za povezivanje frizera i korisnika</p>
         </div>
     </footer>
+
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', function (e) {
+            let validno = true;
+
+            document.querySelectorAll('.js-error').forEach(el => el.remove());
+
+            function prikaziGresku(inputId, poruka) {
+                const input = document.getElementById(inputId);
+                const greska = document.createElement('div');
+                greska.className = 'auth-error js-error';
+                greska.textContent = poruka;
+                input.insertAdjacentElement('afterend', greska);
+                validno = false;
+            }
+
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const confirmation = document.getElementById('password_confirmation').value;
+
+            if (name.length < 2) {
+                prikaziGresku('name', 'Ime mora imati bar 2 karaktera.');
+            }
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                prikaziGresku('email', 'Unesite ispravnu email adresu.');
+            }
+
+            if (password.length < 8) {
+                prikaziGresku('password', 'Lozinka mora imati bar 8 karaktera.');
+            }
+
+            if (password !== confirmation) {
+                prikaziGresku('password_confirmation', 'Lozinke se ne poklapaju.');
+            }
+
+            if (!validno) {
+                e.preventDefault();
+            }
+        });
+    </script>
 
 </body>
 </html>

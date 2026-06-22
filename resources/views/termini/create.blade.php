@@ -129,7 +129,7 @@
                     </div>
                 @endif
 
-                <form action="{{ route('termini.store') }}" method="POST">
+                <form action="{{ route('termini.store') }}" method="POST" id="terminForm">
                     @csrf
 
                     <div class="form-group">
@@ -154,6 +154,23 @@
             <p>BookCut &copy; 2026 - Sistem za povezivanje frizera i korisnika</p>
         </div>
     </footer>
+
+    <script>
+        document.getElementById('terminForm').addEventListener('submit', function (e) {
+            document.querySelectorAll('.js-error').forEach(el => el.remove());
+
+            const datumInput = document.getElementById('datum');
+            const danas = new Date().toISOString().split('T')[0];
+
+            if (datumInput.value < danas) {
+                const greska = document.createElement('p');
+                greska.className = 'error-box js-error';
+                greska.textContent = 'Datum ne može biti u prošlosti.';
+                datumInput.insertAdjacentElement('afterend', greska);
+                e.preventDefault();
+            }
+        });
+    </script>
 
 </body>
 </html>

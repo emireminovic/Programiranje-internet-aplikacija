@@ -52,12 +52,12 @@ class ReviewController extends Controller
 
     public function myReviews()
 {
-    if (auth()->user()->role !== 'korisnik') {
+    if (Auth::user()->role !== 'korisnik') {
         abort(403);
     }
 
-    $reviews = \App\Models\Review::with('frizer')
-        ->where('user_id', auth()->id())
+    $reviews = Review::with('frizer')
+        ->where('user_id', Auth::id())
         ->latest()
         ->get();
 

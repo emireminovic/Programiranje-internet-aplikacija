@@ -44,31 +44,35 @@ class FrizerController extends Controller
     public function edit($id)
     {
         $frizer = Frizer::findOrFail($id);
+        if (auth()->user()->id !== $frizer->user_id) {
+        abort(403);
+    }
         return view('frizeri.edit', compact('frizer'));
+        
     }
 
     public function update(Request $request, $id)
 {
     $frizer = Frizer::findOrFail($id);
 
-    // 🔐 samo vlasnik može da menja profil
+   
     if (auth()->user()->id !== $frizer->user_id) {
         abort(403);
     }
 
-    // ✅ validacija
+    
     $request->validate([
         'cena' => 'nullable|numeric|min:0',
         'slika' => 'nullable|image|mimes:jpg,jpeg,png|max:50000',
     ]);
 
-    // 📸 upload slike
+    
     if ($request->hasFile('slika')) {
         $path = $request->file('slika')->store('frizeri', 'public');
         $frizer->slika = $path;
     }
 
-    // 💰 cena
+   
     $frizer->cena = $request->cena;
 
     $frizer->save();
@@ -114,7 +118,7 @@ class FrizerController extends Controller
         $user->status = 'rejected';
         $user->save();
 
-        return back();
+       return back()->with('success', 'Frizer je odbijen.');
     }
 
 
@@ -141,6 +145,11 @@ public function deleteUser($id)
 
 public function sendWarning(Request $request, $id)
 {
+     $request->validate([
+        'poruka' => 'required|string|max:500',
+    ]);
+
+
     $user = User::findOrFail($id);
 
     \App\Models\Warning::create([

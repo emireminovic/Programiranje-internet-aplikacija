@@ -26,7 +26,7 @@ class TerminController extends Controller
 
     $request->validate([
         'datum' => 'required|date',
-        'vreme' => 'required',
+        'vreme' =>  'required|date_format:H:i',
     ]);
 
     $frizer = Auth::user()->frizer;
